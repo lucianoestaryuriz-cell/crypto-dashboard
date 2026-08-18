@@ -1,0 +1,320 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-primary: #0a0e17;
+    --bg-secondary: #111927;
+    --bg-card: #151f33;
+    --text-primary: #e8edf5;
+    --text-secondary: #8a9bb5;
+    --text-muted: #5a6f8c;
+    --border-color: #1a2a42;
+    --green: #00c853;
+    --red: #ff1744;
+    --yellow: #ffc107;
+    --blue: #2979ff;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    --radius: 12px;
+    --transition: 0.3s ease;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+}
+
+.dashboard-header {
+    background: var(--bg-secondary);
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.header-left h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #2979ff, #00c853);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.header-left h1 i {
+    -webkit-text-fill-color: var(--blue);
+    margin-right: 8px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.update-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.btn-refresh {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-refresh:hover {
+    background: var(--bg-card-hover);
+    color: var(--text-primary);
+    transform: rotate(90deg);
+}
+
+.dashboard-main {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 20px 24px 40px;
+}
+
+.coins-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.coin-card {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    padding: 18px 16px;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.coin-card:hover {
+    background: #1a2a42;
+    transform: translateY(-2px);
+    border-color: var(--blue);
+}
+
+.coin-card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.coin-card .coin-name {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.coin-card .coin-symbol {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.coin-card .coin-price {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 4px 0 2px;
+}
+
+.coin-card .coin-change {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.coin-card .coin-change.positive {
+    color: var(--green);
+}
+.coin-card .coin-change.negative {
+    color: var(--red);
+}
+
+.coin-card .card-score {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.85rem;
+}
+
+.score-badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
+.score-badge.critical {
+    background: #ff174433;
+    color: var(--red);
+}
+.score-badge.danger {
+    background: #ff174433;
+    color: #ff6d00;
+}
+.score-badge.neutral {
+    background: #ffc10733;
+    color: var(--yellow);
+}
+.score-badge.favorable {
+    background: #00c85333;
+    color: var(--green);
+}
+.score-badge.strong {
+    background: #00c85355;
+    color: #00e676;
+}
+
+.status-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+}
+.status-indicator.critical {
+    background: var(--red);
+}
+.status-indicator.danger {
+    background: #ff6d00;
+}
+.status-indicator.neutral {
+    background: var(--yellow);
+}
+.status-indicator.favorable {
+    background: var(--green);
+}
+.status-indicator.strong {
+    background: #00e676;
+}
+
+.loading-spinner {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--border-color);
+    border-top-color: var(--blue);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.dashboard-footer {
+    text-align: center;
+    padding: 20px 24px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.dashboard-footer a {
+    color: var(--blue);
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .dashboard-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        padding: 12px 16px;
+    }
+    .header-left {
+        text-align: center;
+    }
+    .header-right {
+        justify-content: center;
+    }
+    .coins-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}/* ========================================
+   MODAL DE COMPRA
+   ======================================== */
+.exchange-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+    margin: 16px 0;
+}
+
+.exchange-btn {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 16px 12px;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.exchange-btn:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--blue);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.exchange-btn .exchange-icon {
+    font-size: 2rem;
+}
+
+.exchange-btn .exchange-name {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.btn-buy-coin {
+    background: var(--green);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.btn-buy-coin:hover {
+    opacity: 0.85;
+    transform: scale(1.05);
+}

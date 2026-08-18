@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CryptoAnalyzer - Teste</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js">
+    </script>
+    <!-- Adicione meta tags no head -->
+<meta name="description" content="CryptoAnalyzer - Dashboard de análise de criptomoedas com indicadores técnicos e sistema de Score">
+<meta name="keywords" content="criptomoedas, bitcoin, análise técnica, dashboard, trading">
+<meta property="og:title" content="CryptoAnalyzer - Dashboard de Criptomoedas">
+</head>
+<body>
+    <header class="dashboard-header">
+        <div class="header-left">
+            <h1><i class="fas fa-chart-line"></i> CryptoAnalyzer</h1>
+        </div>
+        <div class="header-right">
+            <div class="update-info">
+                <span id="updateTime"><i class="fas fa-clock"></i> Carregando...</span>
+                <button id="refreshBtn" class="btn-refresh"><i class="fas fa-sync-alt"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-main">
+        <section class="coins-grid" id="coinsGrid">
+            <div style="text-align:center;padding:40px;color:#8a9bb5;">
+                <div class="loading-spinner" style="margin:0 auto 16px;"></div>
+                Carregando dados da CoinGecko...
+            </div>
+        </section>
+    </main>
+
+    <footer class="dashboard-footer">
+        <p>Dados fornecidos por <a href="https://www.coingecko.com/" target="_blank">CoinGecko</a></p>
+    </footer>
+<div class="modal" id="buyModal">
+    <div class="modal-content">
+        <span class="modal-close" id="closeBuyModal">&times;</span>
+        <h3><i class="fas fa-shopping-cart"></i> Comprar Moeda</h3>
+        <div id="buyModalContent">
+            <p style="margin-bottom:16px;color:var(--text-secondary);">
+                Escolha uma exchange para comprar <strong id="buyCoinName">Bitcoin</strong>
+            </p>
+            <div class="exchange-grid" id="exchangeGrid">
+                <!-- Renderizado pelo JavaScript -->
+            </div>
+            <p style="margin-top:16px;font-size:0.75rem;color:var(--text-muted);">
+                <i class="fas fa-exclamation-triangle"></i> Você será redirecionado para a exchange escolhida. 
+                Sempre verifique a segurança do site antes de realizar transações.
+            </p>
+        </div>
+    </div>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>
